@@ -1,0 +1,7 @@
+[all:vars]
+ansible_ssh_private_key_file=./.mykeypair.pem
+ansible_connection=ssh
+ansible_user=ec2-user
+[apache]
+54.159.201.71
+[mysql]

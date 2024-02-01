@@ -1,0 +1,35 @@
+---
+- name: Provision PHP page with Apache
+  hosts: apache
+  become: true
+
+  tasks:
+    - name: Install Apache
+      package:
+        name: httpd
+        state: present
+
+    - name: Ensure Apache is running and enabled
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: Install PHP
+      package:
+        name: php
+        state: present
+
+    - name: Copy PHP page to Apache document root
+      copy:
+        src: ./page.php
+        dest: /var/www/html/page.php
+        owner: root
+        group: root
+        mode: "0644"
+
+    - name: Ensure Apache reload to display PHP page
+      service:
+        name: httpd
+        state: reloaded
+        enabled: yes
