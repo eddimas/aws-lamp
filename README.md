@@ -8,8 +8,28 @@ Second part is to provision a basic php page using apache server.
 
 ## Prerequisites
 
-SSH key pair should be created and mentioned in provision_infra/vars.tf
-These .pem key will be stored in the setup_lamp/ folder
+1. SSH key pair should be created and mentioned in provision_infra/vars.tf
+2. Modify the ~/.ssh/config file to include the below lines.
+
+```bash
+Host bastion
+   User ec2-user
+   IdentityFile ~/.ssh/myNewKey
+   Hostname <ec2-publicInstanceIP>
+
+Host apache
+   User ec2-user
+   IdentityFile ~/.ssh/myNewKey
+   Hostname <ec2-publicInstanceIP>
+
+Host mysql
+   User ec2-user
+   Hostname <ec2-privateInstanceIP>
+   IdentityFile ~/.ssh/myNewKey
+   ProxyCommand ssh -q -W %h:%p bastion
+```
+
+3. These .pem key will be stored in the setup_lamp/ folder
 
 ## Terraform
 
