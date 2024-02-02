@@ -18,15 +18,15 @@
 --
 -- Current Database: `nation`
 --
--- DROP USER 'test_user'@'ip-192-168-1-250.ec2.internal';
-CREATE USER 'test_user'@'ip-192-168-1-250.ec2.internal' IDENTIFIED BY 'password';
+-- DROP USER 'test_user'@'%';
+CREATE USER 'test_user'@'%' IDENTIFIED BY 'password';
 --
 -- Current Database: `nation`
 --
 
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `nation` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-GRANT ALL PRIVILEGES ON *.* TO 'test_user'@'ip-192-168-1-250.ec2.internal';
+GRANT ALL PRIVILEGES ON *.* TO 'test_user'@'%';
 USE `nation`;
 
 --
