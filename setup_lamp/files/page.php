@@ -7,7 +7,7 @@
     <h1>Welcome to my PHP Page!</h1>
     <?php
 $servername = "mysql";
-$username = "mysql_user";
+$username = "test_user";
 $password = "password";
 $dbname = "nation";
 

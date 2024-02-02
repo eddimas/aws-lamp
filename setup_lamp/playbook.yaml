@@ -20,6 +20,16 @@
         name: php
         state: present
 
+    - name: Install PHP
+      package:
+        name: php8.2-mysqlnd
+        state: present
+
+    - name: Install PHP
+      package:
+        name: php8.2-pdo
+        state: present
+
     - name: Copy PHP page to Apache document root
       copy:
         src: page.php
