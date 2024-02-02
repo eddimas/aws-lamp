@@ -22,7 +22,7 @@
 
     - name: Copy PHP page to Apache document root
       copy:
-        src: ./page.php
+        src: page.php
         dest: /var/www/html/page.php
         owner: root
         group: root
@@ -33,3 +33,27 @@
         name: httpd
         state: reloaded
         enabled: yes
+
+- name: Provision MySQL database
+  hosts: db_server
+  become: true
+
+  tasks:
+    - name: Install MySQL
+      package:
+        name: mariadb*-server
+        state: present
+
+    - name: Ensure MySQL is running and enabled
+      service:
+        name: mariadb
+        state: started
+        enabled: yes
+
+    - name: Transfer SQL file
+      copy:
+        src: database.sql
+        dest: /var/tmp/database.sql
+
+    - name: Execute MariaDB commands
+      shell: "sudo su - root -c \"mysql -u root -p'\n' < /var/tmp/database.sql\""
