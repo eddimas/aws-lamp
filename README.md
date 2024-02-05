@@ -59,19 +59,18 @@ ansible-playbook -i inventory playbook.yaml
 Sample output is shown below.
 
 ```bash
-curl -iv http://54.159.201.71/page.php
-*   Trying 54.159.201.71:80...
-* Connected to 54.159.201.71 (54.159.201.71) port 80 (#0)
+*   Trying 44.201.218.61:80...
+* Connected to 44.201.218.61 (44.201.218.61) port 80 (#0)
 > GET /page.php HTTP/1.1
-> Host: 54.159.201.71
+> Host: 44.201.218.61
 > User-Agent: curl/7.81.0
 > Accept: */*
 >
 * Mark bundle as not supporting multiuse
 < HTTP/1.1 200 OK
 HTTP/1.1 200 OK
-< Date: Thu, 01 Feb 2024 23:52:49 GMT
-Date: Thu, 01 Feb 2024 23:52:49 GMT
+< Date: Mon, 05 Feb 2024 07:26:31 GMT
+Date: Mon, 05 Feb 2024 07:26:31 GMT
 < Server: Apache/2.4.58 (Amazon Linux)
 Server: Apache/2.4.58 (Amazon Linux)
 < Transfer-Encoding: chunked
@@ -83,11 +82,11 @@ Content-Type: text/html; charset=UTF-8
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Simple PHP Page</title>
+    <title>PHP Page</title>
 </head>
 <body>
     <h1>Welcome to my PHP Page!</h1>
-    <p>Current Date and Time: 2024-02-01 23:52:49</p></body>
-* Connection #0 to host 54.159.201.71 left intact
+    id:  - Name: North America<br>id:  - Name: Asia<br>id:  - Name: Africa<br>id:  - Name: Europe<br>id:  - Name: South America<br>id:  - Name: Oceania<br>id:  - Name: Antarctica<br></body>
+* Connection #0 to host 44.201.218.61 left intact
 </html>%
 ```
