@@ -2,6 +2,10 @@ variable "ami" {
   default = "ami-0277155c3f0ab2930"
 }
 
+variable "instance_type" {
+  description = "value of the instance type."
+}
+
 variable "key_name" {
   description = "SSH Key used for the servers."
 }

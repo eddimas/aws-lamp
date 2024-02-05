@@ -1,6 +1,6 @@
 # Create the security group for web server
 resource "aws_security_group" "test-web" {
-  name = "test-web"
+  name = "tf-${var.environment}-sg-web"
   description = "Security Group for Web Server"
   vpc_id = "${var.vpc_id}"
 
@@ -26,22 +26,19 @@ resource "aws_security_group" "test-web" {
   }
 
   tags= {
-    Name = "test-web"
+    Name = "tf-${var.environment}-sg-web"
   }
 }
 
-# Create an EC2 instance
 resource "aws_instance" "web" {
-  # AMI ID for Ubuntu
   ami           = "${var.ami}"
-  instance_type = "t2.micro"
+  instance_type = "${var.instance_type}"
   key_name      =  "${var.key_name}"
   vpc_security_group_ids = ["${aws_security_group.test-web.id}"]
   subnet_id = "${var.subnet_id}"
 
   tags ={
-    Name = "Web"
-    CR = "SHUTDOWN"
+    Name = "tf-${var.environment}-web"
   }
 }
 

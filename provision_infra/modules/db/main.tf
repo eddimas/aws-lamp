@@ -1,6 +1,6 @@
 # Create the security group for web server
 resource "aws_security_group" "test-db" {
-  name = "test-db"
+  name = "tg-${var.environment}-sg-db"
   description = "Security Group for DB Server"
   vpc_id = "${var.vpc_id}"
 
@@ -26,21 +26,18 @@ resource "aws_security_group" "test-db" {
   }
 
   tags= {
-    Name = "test-db"
+    Name = "tf-${var.environment}-sg-db"
   }
 }
 
-# Create an EC2 instance
 resource "aws_instance" "db" {
-  # AMI ID for CentOS
   ami           = "${var.ami}"
-  instance_type = "t2.micro"
+  instance_type = "${var.instance_type}"
   key_name      =  "${var.key_name}"
   vpc_security_group_ids = ["${aws_security_group.test-db.id}"]
   subnet_id = "${var.subnet_id}"
 
   tags ={
-    Name = "${var.environment}-DB"
-    CR = "SHUTDOWN"
+    Name = "tf-${var.environment}-db"
   }
 }
